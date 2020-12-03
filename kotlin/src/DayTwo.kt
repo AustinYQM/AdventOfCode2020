@@ -54,19 +54,21 @@ object DayTwo {
         }
     }
 
-    fun letterCount(pass: String, letter: Char): Int = pass.filter { it == letter }.count()
+    fun letterCount(pass: String, letter: Char) = pass.filter { it == letter }.count()
 
-    fun countInRange(min: Int, max: Int, count: Int): Boolean  = count in min..max
+    fun countInRange(min: Int, max: Int, count: Int)  = count in min..max
 
-    fun buildMin(line: String): Int =  line.substring(0, line.indexOf('-')).toInt()
+    fun buildMin(line: String) =  line.substring(0, line.indexOf('-')).toInt()
 
-    fun buildMax(line: String): Int = line.substring(line.indexOf('-') + 1, line.indexOf(' ')).toInt()
+    fun buildMax(line: String) = line.substring(line.indexOf('-') + 1, line.indexOf(' ')).toInt()
+
+    fun buildChar(line: String) = line[line.indexOf(':')-1]
+
+    fun buildString(line: String) = line.substring(line.indexOf(' ', line.indexOf(' ') + 1) + 1)
 
     fun buildMinMax(line: String): Pair<Int, Int> = Pair(buildMin(line), buildMax(line))
 
-    fun buildChar(line: String): Char = line[line.indexOf(':')-1]
 
-    fun buildString(line: String): String = line.substring(line.indexOf(' ', line.indexOf(' ') + 1) + 1)
 
 
     fun checkPass(pass: String,
