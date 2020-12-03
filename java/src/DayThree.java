@@ -5,7 +5,7 @@ public class DayThree {
 
     public static void main(String[] args) {
         partOne("day3");
-        partTwo("day3", 1, 1);
+        partTwo("day3");
     }
 
     public static void partOne(String filename) {
@@ -21,7 +21,6 @@ public class DayThree {
                 if(row.charAt(position) == '#') {
                     treeCount++;
                 }
-                System.out.println(row + (row.charAt(position % row.length()) == '#' ? "" : " no") + " Tree encountered. Tree Count: " + treeCount + " " + position);
                 position += slope;
             }
             System.out.println(treeCount);
@@ -30,7 +29,7 @@ public class DayThree {
         }
     }
 
-    public static void partTwo(String filename, int rslope, int dslope) {
+    public static int countTrees(String filename, int rslope, int dslope) {
 
         try {
             Scanner file = new Scanner(new File(filename));
@@ -39,18 +38,36 @@ public class DayThree {
             int downSlope = dslope;
             String row = file.nextLine();
             while(file.hasNextLine()) {
+                while(--downSlope > 0) row = file.nextLine();
                 row = file.nextLine();
                 if(position >= row.length()) position -= row.length();
                 if(row.charAt(position) == '#') {
                     treeCount++;
                 }
-                System.out.println(row + (row.charAt(position % row.length()) == '#' ? "" : " no") + " Tree encountered. Tree Count: " + treeCount + " " + position);
                 position += rslope;
-                while(--downSlope > 0) row = file.nextLine();
+                downSlope = dslope;
+
             }
-            System.out.println(treeCount);
+            return treeCount;
         } catch (Exception e) {
             System.out.println(e);
         }
+        return 0;
+    }
+
+    public static void partTwo(String filename) {
+        int totalTrees = 1;
+        totalTrees *= countTrees(filename, 1, 1);
+        System.out.println(countTrees(filename, 1, 1));
+        totalTrees *= countTrees(filename, 3, 1);
+        System.out.println(countTrees(filename, 3, 1));
+        totalTrees *= countTrees(filename, 5, 1);
+        System.out.println(countTrees(filename, 5, 1));
+        totalTrees *= countTrees(filename, 7,1);
+        System.out.println(countTrees(filename, 7, 1));
+        totalTrees *= countTrees(filename, 1, 2);
+        System.out.println(countTrees(filename, 1, 2));
+        System.out.println("Total trees: " + totalTrees);
+
     }
 }
