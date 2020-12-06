@@ -3,7 +3,7 @@ import java.util.*
 
 object Helper {
     fun returnInts(fileName: String?): MutableList<Int> {
-        val list: MutableList<Int> = LinkedList<Int>()
+        val list: MutableList<Int> = ArrayList<Int>()
         try {
             val file = Scanner(File(fileName))
             while (file.hasNextInt()) {
@@ -11,6 +11,19 @@ object Helper {
             }
         } catch (e: Exception) {
             println(e.stackTrace)
+        }
+        return list
+    }
+
+    fun returnStrings(fileName: String?): MutableList<String> {
+        val list: MutableList<String> = ArrayList<String>()
+        try {
+            val file = Scanner(File(fileName))
+            while (file.hasNextLine()) {
+                list.add(file.nextLine() as String)
+            }
+        } catch (e: java.lang.Exception) {
+            println(e)
         }
         return list
     }

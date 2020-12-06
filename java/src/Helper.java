@@ -22,4 +22,19 @@ public class Helper {
 
         return list;
     }
+
+    public static ArrayList<String> returnStrings(String fileName) {
+        ArrayList list = new ArrayList<String>();
+
+        try {
+            Scanner file = new Scanner(new File(fileName));
+            while(file.hasNextLine()) {
+                list.add(file.nextLine());
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return list;
+    }
 }

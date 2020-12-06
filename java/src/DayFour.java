@@ -120,16 +120,6 @@ public class DayFour {
             this.pid = pid;
             this.cid = cid;
         }
-        public Passport(int byr, int iyr, int eyr, String hgt, String hcl, String ecl, String pid) {
-            this.byr = byr;
-            this.iyr = iyr;
-            this.eyr = eyr;
-            this.hgt = hgt;
-            this.hcl = hcl;
-            this.ecl = ecl;
-            this.pid = pid;
-            this.cid = "North Pole";
-        }
 
         boolean validateByr() {
             return byr > 1000 && (byr >= 1920) && byr <= 2002;
